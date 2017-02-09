@@ -9,10 +9,15 @@ class CounterPage extends React.Component {
         super(props, context);
 
         this.incrementCount = this.incrementCount.bind(this);
+        this.incrementCountAsync = this.incrementCountAsync.bind(this);
     }
 
     incrementCount() {
         this.props.actions.incrementCount();
+    }
+
+    incrementCountAsync() {
+        this.props.actions.incrementCountAsync();
     }
 
     render() {
@@ -20,7 +25,8 @@ class CounterPage extends React.Component {
             <div>
                 <h1>Counter</h1>
                 <h2>Count is {this.props.count}</h2>
-                <button onClick={this.incrementCount}>Increment</button>
+                <button onClick={this.incrementCount}>Increments</button>
+                <button onClick={this.incrementCountAsync}>Increment Async</button>
             </div>
         );
     }
