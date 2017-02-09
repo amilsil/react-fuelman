@@ -1,12 +1,17 @@
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers';
-// Use immutability check middleware.
-import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
+import createSagaMiddleware from 'redux-saga';
+import { helloSaga } from '../saga/helloSaga';
 
 export default function configureStore(initialState) {
-    return createStore(
+    let sagaMiddleware = createSagaMiddleware();
+    
+    let store = createStore(
         rootReducer,
-        initialState,
-        applyMiddleware(reduxImmutableStateInvariant())
+        initialState
     );
+
+    //sagaMiddleware.run(helloSaga);
+    
+    return store;
 }

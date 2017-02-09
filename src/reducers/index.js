@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 // Call this courses to increase readability at component level
-import courses from './courseReducer';
+import courseReducer from './courseReducer';
+import counterReducer from './counterReducer';
 
-const rootReducer = combineReducers({
-    courses
-});
-
-export default rootReducer;
+export default function combined (state = {}, action) {
+    return {
+        count: counterReducer(state.count, action),
+        courses: courseReducer(state.courses, action)
+    }
+}
