@@ -11,6 +11,8 @@ const Header = () => {
             <Link to="/courses" activeClassName="active">Courses</Link>
             {" | "}
             <Link to="/counter" activeClassName="active">Counter</Link>
+            {" | "}
+            <Link to="/posts" activeClassName="active">Posts</Link>
         </nav>
     );
 };

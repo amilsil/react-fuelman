@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers';
 import createSagaMiddleware from 'redux-saga';
 import { helloSaga } from '../saga/helloSaga';
-import { watchIncrementAsync } from '../saga/counterSaga';
+import rootSaga from '../saga/rootSaga';
 
 export default function configureStore(initialState) {
     let sagaMiddleware = createSagaMiddleware();
@@ -13,7 +13,7 @@ export default function configureStore(initialState) {
         applyMiddleware(sagaMiddleware)
     );
 
-    sagaMiddleware.run(watchIncrementAsync);
+    sagaMiddleware.run(rootSaga);
     
     return store;
 }
