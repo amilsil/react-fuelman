@@ -59,7 +59,7 @@ export default class VehiclesList extends React.Component {
         return (
             <div className="vehicle-list-block col-sm-4">
                 <ul className="vehicle-list">
-                    {this.props.vehicles.map(this.vehicleRow)}
+                    {this.props.vehicles && this.props.vehicles.map(this.vehicleRow)}
                     <li className="vehicle-list_new">
                     <a href="#" onClick={this.prepareNew}><big></big>{this.newForm()}</a>
                 </li>
