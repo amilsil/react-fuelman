@@ -21,8 +21,9 @@ class VehiclesPage extends React.Component {
             <div className="row">
                 <VehiclesList 
                     vehicles={this.props.vehicles} 
-                    selectedIndex={this.props.selectedIndex}
-                    createVehicle={this.props.actions.createVehicle} />
+                    selectedVehicle={this.props.selectedVehicle}
+                    createVehicle={this.props.actions.createVehicle}
+                    selectVehicle={this.props.actions.selectVehicle} />
                 {this.props.vehicles && <VehicleDetails vehicle={this.props.vehicles[0]} />}
             </div>
         );
@@ -31,13 +32,13 @@ class VehiclesPage extends React.Component {
 
 VehiclesPage.propTypes = {
     actions: PropTypes.object.isRequired,
-    selectedIndex: PropTypes.number.isRequired
+    selectedVehicle: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state, ownProps) {
     return {
         vehicles: state.vehicleData.vehicles,
-        selectedIndex: state.vehicleData.selectedIndex
+        selectedVehicle: state.vehicleData.selectedVehicle
     };
 }
 

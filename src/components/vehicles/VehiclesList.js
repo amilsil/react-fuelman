@@ -8,14 +8,20 @@ export default class VehiclesList extends React.Component {
         this.vehicleRow = this.vehicleRow.bind(this);
     }
 
-    vehicleRow (vehicle) { 
+    selectVehicle(index, event) {
+        const vehicleClickedOn = this.props.vehicles[index];
+        this.props.selectVehicle(vehicleClickedOn);
+        event.preventDefault();
+    }
+
+    vehicleRow (vehicle, index) { 
         let className = "";
-        if(this.props.selectedIndex === vehicle.id){
+        if(this.props.selectedVehicle === vehicle) {
             className = "selected";
         }
         return (
             <li key={vehicle.id} className={className}>
-                <a href="#"><big>{vehicle.name.substring(0,1)}</big>{vehicle.name}</a>
+                <a href="#" onClick={this.selectVehicle.bind(this, index)}><big>{vehicle.name.substring(0,1)}</big>{vehicle.name}</a>
             </li>
           );
     }
@@ -24,7 +30,7 @@ export default class VehiclesList extends React.Component {
         return (
             <div className="vehicle-list-block col-sm-4">
                 <ul className="vehicle-list">
-                    {this.props.vehicles && this.props.vehicles.map(this.vehicleRow)}
+                    {this.props.vehicles && this.props.vehicles.map(this.vehicleRow, this)}
                 </ul>
                 <div className="vehicle-form-new">
                     <VehiclesListFormNew createVehicle={this.props.createVehicle} />
@@ -35,7 +41,7 @@ export default class VehiclesList extends React.Component {
 }
 
 VehiclesList.propTypes = {
-    selectedIndex: PropTypes.number.isRequired,
     vehicles: PropTypes.array.isRequired,
-    createVehicle: PropTypes.func.isRequired
+    createVehicle: PropTypes.func.isRequired,
+    selectVehicle: PropTypes.func.isRequired
 };
