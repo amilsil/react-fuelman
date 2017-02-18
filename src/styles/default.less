@@ -1,0 +1,110 @@
+div.vehicle-list-block {
+    
+    margin-top: 50px;
+
+    ul.vehicle-list {
+        list-style: none;
+        font-size: 1.3em;
+        color: #666;
+        padding-left: 0;
+
+        li {
+            padding: 10px 0px;
+        }
+
+        li.vehicle-list_new {
+            color:#999;
+        }
+
+        li a {
+            color: inherit;
+            padding: 2px 10px;
+            border-radius: 4px;
+             
+            &:hover {
+                font-weight: bold;
+                text-decoration: none;
+            }
+        }
+
+        li.selected a {
+            color: #333;
+            font-weight: bold;
+            background-color:antiquewhite;
+        }
+
+    }
+}
+
+div.vehicle-detail-block {
+    margin-top: 30px;
+
+    h1, h2 {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .vehicle-refill_block, .vehicle-summary_block {
+        padding: 20px 20px;
+    }
+
+    .vehicle-summary_block {
+        .vehicle-mileage, .vehicle-odometer {
+            margin: 20px 0;
+            label, .value, .unit {
+                display: block;
+            }
+            label, .unit {
+                font-size: 16px;
+            }
+            .value {
+                font-weight: bold;
+                font-size: 50px;
+                line-height: 50px;
+                text-shadow: 1px 0px 2px #eee;
+                color: #556;
+            }
+        }
+    }
+
+    .vehicle-refill_block {
+        
+        ul.vehicle-refill_list {
+            list-style: none;
+            padding-left:0;
+            margin-top: 25px;
+
+            li.vehicle-refill_row {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1.4em;
+                span {
+                    display: inline-block;
+                    line-height: 25px;
+                }
+                span.refill-date {
+                    display: block;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                }
+                span.refill-odometer {
+                    font-weight: bold;
+                    width: 120px;
+                }
+                span.refill-amount {
+                    font-weight: bold;
+                    width: 60px;
+                }
+                span.refill-type {
+                    text-transform: uppercase;
+                    font-size: 12px;
+                }
+            }
+
+            li.vehicle-refill_form {
+                background-color: #eef;
+                padding: 15px 5px;
+                border-radius: 3px;
+            }
+        }
+    }
+    
+}
