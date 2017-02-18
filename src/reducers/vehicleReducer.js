@@ -3,7 +3,7 @@ import * as types from '../actions/actionTypes';
 export default function vehicleReducer(state = {}, action) {
     switch(action.type) {
         case '@@INIT':
-            return { vehicles: [], selectedVehicle: {} };
+            return { vehicles: [], selectedVehicle: null };
         case types.VEHICLES_FETCH_SUCCESS:
             return Object.assign({}, state, { vehicles: action.vehicles, selectedVehicle: action.vehicles[0] });
         case types.VEHICLE_ADD: 

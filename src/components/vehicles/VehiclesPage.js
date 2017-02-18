@@ -24,15 +24,14 @@ class VehiclesPage extends React.Component {
                     selectedVehicle={this.props.selectedVehicle}
                     createVehicle={this.props.actions.createVehicle}
                     selectVehicle={this.props.actions.selectVehicle} />
-                {this.props.vehicles && <VehicleDetails vehicle={this.props.vehicles[0]} />}
+                {this.props.vehicles && <VehicleDetails vehicle={this.props.selectedVehicle} />}
             </div>
         );
     }
 }
 
 VehiclesPage.propTypes = {
-    actions: PropTypes.object.isRequired,
-    selectedVehicle: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state, ownProps) {
