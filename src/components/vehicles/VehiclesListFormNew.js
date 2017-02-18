@@ -20,6 +20,7 @@ export default class VehiclesListFormNew extends React.Component {
 
     performAddNew(event) {
         this.props.createVehicle(this.state.name);
+        this.setState({ isAddingNew: false });
         event.preventDefault();
     }
 
