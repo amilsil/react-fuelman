@@ -1,16 +1,37 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-export default function VehiclesList(props) {
-    return (
-        <div className="vehicle-list-block col-sm-4">
-            <ul className="vehicle-list">
-                <li><a href="#">Ford Fiesta</a></li>
-                <li className="selected"><a href="#">Toyota Corolla</a></li>
-                <li><a href="#">Honda Civic</a></li>
-                <li><a href="#">Audi Rx8</a></li>
-                <li><a href="#">Mitsubhishi Challenger</a></li>
-                <li className="vehicle-list_new"><a href="#">New...</a></li>
-            </ul>
-        </div>
-    );
+export default class VehiclesList extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.vehicleRow = this.vehicleRow.bind(this);
+    }
+
+    vehicleRow (vehicle) { 
+        let className = "";
+        if(this.props.selectedIndex === vehicle.id){
+            className = "selected";
+        }
+        return (
+            <li key={vehicle.id} className={className}>
+                <a href="#"><big>{vehicle.name.substring(0,1)}</big>{vehicle.name}</a>
+            </li>
+          );
+    }
+
+    render() {
+        return (
+            <div className="vehicle-list-block col-sm-4">
+                <ul className="vehicle-list">
+                    {this.props.vehicles.map(this.vehicleRow)}
+                    <li className="vehicle-list_new"><a href="#">New...</a></li>
+                </ul>
+            </div>
+        );
+    }
 }
+
+VehiclesList.propTypes = {
+    selectedIndex: PropTypes.number.isRequired,
+    vehicles: PropTypes.array.isRequired
+};

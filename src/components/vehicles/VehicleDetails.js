@@ -5,8 +5,8 @@ import VehicleDetailsRefills from './VehicleDetailsRefills';
 export default function VehicleDetails (props) {
     return (
         <div className="vehicle-detail-block col-sm-8">
-            <VehicleDetailsSummary />    
-            <VehicleDetailsRefills />
+            <VehicleDetailsSummary vehicle={props.vehicle} />    
+            <VehicleDetailsRefills refills={props.vehicle.refills} />
         </div>
     );
 }
