@@ -25,13 +25,23 @@ export default class VehiclesPage extends React.Component {
                 { id: 4, name: "Audi R8", refills: [] },
                 { id: 5, name: "Mitsubhishi Challenger", refills: [] }
             ]
-        }
+        };
+
+        this.addNewVehicle = this.addNewVehicle.bind(this);
+    }
+
+    addNewVehicle(name) {
+        let newVehicle = { id: this.state.vehicles.length + 2, name: name, refills: [] };
+        this.setState({ vehicles: [...this.state.vehicles, newVehicle] });
     }
 
     render() {
         return (
             <div className="row">
-                <VehiclesList vehicles={this.state.vehicles} selectedIndex={this.state.selectedIndex} />
+                <VehiclesList 
+                    vehicles={this.state.vehicles} 
+                    selectedIndex={this.state.selectedIndex}
+                    onAddNew={this.addNewVehicle} />
                 <VehicleDetails vehicle={this.state.vehicles[this.state.selectedIndex - 1]} />
             </div>
         );
