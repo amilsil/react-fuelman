@@ -34,7 +34,7 @@ export default class VehiclesList extends React.Component {
 
     addNew() {
         if(this.state.newVehicleName.length > 0)
-            this.props.onAddNew(this.state.newVehicleName);
+            this.props.createVehicle(this.state.newVehicleName);
     }
 
     handleChange(event) {

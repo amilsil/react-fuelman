@@ -21,7 +21,7 @@ export default class VehicleDetailsRefills extends React.Component {
     render() {
         return (
             <div className="vehicle-refill_block">
-                <h3>Recent Refills</h3>
+                <h2>Recent Refills</h2>
 
                 <VehicleDetailsRefillForm />
                 
