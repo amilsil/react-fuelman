@@ -8,7 +8,7 @@ export default function VehicleDetails (props) {
     
     return (
         <div className="vehicle-detail-block col-sm-8">
-            <VehicleDetailsSummary vehicle={props.vehicle} />    
+            <VehicleDetailsSummary vehicle={props.vehicle} consumption={props.consumption} />    
             <VehicleDetailsRefills refills={props.vehicle.refills} />
         </div>
     );

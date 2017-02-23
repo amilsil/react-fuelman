@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import VehiclesList from './VehiclesList';
 import VehicleDetails from './VehicleDetails';
 import * as vehicleActions from '../../actions/vehicleActions';
+import { fuelConsumptionSelector } from '../../selectors/fuelConsumptionSelector';
 
 class VehiclesPage extends React.Component {
 
@@ -19,12 +20,14 @@ class VehiclesPage extends React.Component {
     render() {
         return (
             <div className="row">
-                <VehiclesList 
-                    vehicles={this.props.vehicles} 
+                <VehiclesList
+                    vehicles={this.props.vehicles}
                     selectedVehicle={this.props.selectedVehicle}
                     createVehicle={this.props.actions.createVehicle}
                     selectVehicle={this.props.actions.selectVehicle} />
-                {this.props.vehicles && <VehicleDetails vehicle={this.props.selectedVehicle} />}
+                {this.props.vehicles && <VehicleDetails
+                    consumption={this.props.consumption}
+                    vehicle={this.props.selectedVehicle} />}
             </div>
         );
     }
@@ -37,7 +40,8 @@ VehiclesPage.propTypes = {
 function mapStateToProps(state, ownProps) {
     return {
         vehicles: state.vehicleData.vehicles,
-        selectedVehicle: state.vehicleData.selectedVehicle
+        selectedVehicle: state.vehicleData.selectedVehicle,
+        consumption: fuelConsumptionSelector(state)
     };
 }
 
@@ -47,4 +51,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (VehiclesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(VehiclesPage);
